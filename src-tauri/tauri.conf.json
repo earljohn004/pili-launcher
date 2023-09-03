@@ -18,7 +18,10 @@
         "open": true
       },
       "fs": {
-        "scope": ["$RESOURCE/webui/menu/index.html"],
+        "scope": ["webui/menu/index.html"],
+        "all": true
+      },
+      "path": {
         "all": true
       }
     },
