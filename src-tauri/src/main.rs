@@ -17,7 +17,7 @@ async fn hello() -> impl Responder {
 fn main() {
     tauri::Builder
         ::default()
-        .setup(|app| {
+        .setup(|_app| {
             tauri::async_runtime::spawn(
                 HttpServer::new(|| { App::new().service(hello) })
                     .bind(("127.0.0.1", 8080))?
