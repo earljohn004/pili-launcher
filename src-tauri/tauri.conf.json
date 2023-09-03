@@ -16,6 +16,10 @@
       "shell": {
         "all": false,
         "open": true
+      },
+      "fs": {
+        "scope": ["$RESOURCE/webui/menu/index.html"],
+        "all": true
       }
     },
     "bundle": {
@@ -28,6 +32,9 @@
         "icons/128x128@2x.png",
         "icons/icon.icns",
         "icons/icon.ico"
+      ],
+      "resources": [
+        "webui/*"
       ]
     },
     "security": {
@@ -38,8 +45,8 @@
         "fullscreen": false,
         "resizable": true,
         "title": "pili-launcher-vite",
-        "width": 800,
-        "height": 600
+        "width": 1500,
+        "height": 790
       }
     ]
   }
