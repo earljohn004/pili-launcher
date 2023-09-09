@@ -1,4 +1,6 @@
-export const MOCK_GAME_DATA = [
+import { PropsGameBody } from "../interface/GameInterface";
+
+const dummyGameList: string[] = [
   "Game 01",
   "Game 02",
   "Game 03",
@@ -54,10 +56,15 @@ export const MOCK_GAME_DATA = [
   "Game 50",
 ];
 
-export const MOCK_GAME_CATEGORIES = [
+const dummyGameCategory: string[] = [
   "Internet",
   "Online Games",
   "Offline Games",
-  "Game Tools", 
-  "Portable Apps"
-]
+  "Game Tools",
+  "Portable Apps",
+];
+
+export const MOCK_GAME_DATA: PropsGameBody = {
+  gameCategories: dummyGameCategory,
+  gameData: dummyGameList,
+};

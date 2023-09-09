@@ -1,31 +1,8 @@
-import { Box, BoxProps, Button, Grid, Stack } from "@mui/material";
-import { MOCK_GAME_CATEGORIES, MOCK_GAME_DATA } from "../constants/mockData";
-import zIndex from "@mui/material/styles/zIndex";
+import { Box, Button, Grid, Stack } from "@mui/material";
 import GameCardIcon from "./GameCardIcon";
+import { PropsGameBody } from "../interface/GameInterface";
 
-function Item(props: BoxProps) {
-  const { sx, ...other } = props;
-  return (
-    <Box
-      sx={{
-        p: 4,
-        m: 2,
-        bgcolor: (theme) => (theme.palette.mode === "dark" ? "red" : "black"),
-        color: (theme) => (theme.palette.mode === "dark" ? "red" : "red"),
-        border: "2px solid",
-        borderColor: (theme) =>
-          theme.palette.mode === "dark" ? "red" : "black",
-        borderRadius: 1,
-        fontSize: "0.875rem",
-        fontWeight: "700",
-        ...sx,
-      }}
-      {...other}
-    />
-  );
-}
-
-const GameBody = () => (
+const GameBody = (props: PropsGameBody) => (
   <>
     <Box
       sx={{
@@ -54,7 +31,7 @@ const GameBody = () => (
     <Grid container maxHeight={500} sx={{ zIndex: 999, overflow: "hidden" }}>
       <Grid xs={2} sx={{ zIndex: 999 }} height="100%">
         <Stack gap={2} width="90%" marginLeft={2} marginTop={5}>
-          {MOCK_GAME_CATEGORIES.map((item)=>(
+          {props.gameCategories?.map((item) => (
             <Button variant="contained">{item}</Button>
           ))}
         </Stack>
@@ -73,9 +50,8 @@ const GameBody = () => (
           height="60vh"
           width="100%"
         >
-          {MOCK_GAME_DATA.map((item) => (
-            // <Item>{item}</Item>
-            <GameCardIcon title={item}/>
+          {props.gameData?.map((item) => (
+            <GameCardIcon title={item} />
           ))}
         </Box>
       </Grid>
