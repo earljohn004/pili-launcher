@@ -68,7 +68,7 @@ const GameBody = () => (
             display: "flex",
             flexDirection: "row",
             flexWrap: "wrap",
-            overflowY: "scroll",
+            overflowY: "auto",
             overFlowY: "hidden",
           }}
           height="60vh"
