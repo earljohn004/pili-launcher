@@ -2,7 +2,7 @@ import { Box, Typography } from "@mui/material";
 import { resolveResource } from "@tauri-apps/api/path";
 import { useEffect, useState } from "react";
 
-const GameMenuBar = () => {
+const GameHeader = () => {
   const [sourceDir, setSourceDir] = useState<string>("");
 
   useEffect(() => {
@@ -40,4 +40,4 @@ const GameMenuBar = () => {
   );
 };
 
-export default GameMenuBar;
+export default GameHeader;

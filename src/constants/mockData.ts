@@ -53,3 +53,11 @@ export const MOCK_GAME_DATA = [
   "Game 49",
   "Game 50",
 ];
+
+export const MOCK_GAME_CATEGORIES = [
+  "Internet",
+  "Online Games",
+  "Offline Games",
+  "Game Tools", 
+  "Portable Apps"
+]

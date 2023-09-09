@@ -1,5 +1,5 @@
 import { Box, Container } from "@mui/material";
-import GameMenuBar from "./components/GameMenuBar";
+import GameHeader from "./components/GameHeader";
 import GameBody from "./components/GameBody";
 import GameFooter from "./components/GameFooter";
 
@@ -13,7 +13,7 @@ function App() {
             width: "99vw",
             overflow: "hidden",
             zIndex: -1,
-            position: "absolute"
+            position: "absolute",
           }}
         >
           <iframe
@@ -28,12 +28,12 @@ function App() {
             src="src-tauri/webui/page/index.html"
           />
         </Box>
-        <div style={{zIndex: 100}}>
-        <GameMenuBar />
-        <GameBody />
-        <GameFooter />
+        <div style={{ zIndex: 100 }}>
+          <GameHeader />
+          <GameBody />
+          <GameFooter />
         </div>
-     </Container>
+      </Container>
     </>
   );
 }

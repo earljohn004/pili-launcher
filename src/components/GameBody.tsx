@@ -1,6 +1,7 @@
 import { Box, BoxProps, Button, Grid, Stack } from "@mui/material";
-import { MOCK_GAME_DATA } from "../constants/mockData";
+import { MOCK_GAME_CATEGORIES, MOCK_GAME_DATA } from "../constants/mockData";
 import zIndex from "@mui/material/styles/zIndex";
+import GameCardIcon from "./GameCardIcon";
 
 function Item(props: BoxProps) {
   const { sx, ...other } = props;
@@ -53,12 +54,9 @@ const GameBody = () => (
     <Grid container maxHeight={500} sx={{ zIndex: 999, overflow: "hidden" }}>
       <Grid xs={2} sx={{ zIndex: 999 }} height="100%">
         <Stack gap={2} width="90%" marginLeft={2} marginTop={5}>
-          <Button variant="text" color="inherit">
-            Online Games
-          </Button>
-          <Button variant="contained">LAN Games</Button>
-          <Button variant="contained">Game Tools</Button>
-          <Button variant="contained">Portable Apps</Button>
+          {MOCK_GAME_CATEGORIES.map((item)=>(
+            <Button variant="contained">{item}</Button>
+          ))}
         </Stack>
       </Grid>
       <Grid xs={10} sx={{ zIndex: 999 }}>
@@ -67,13 +65,17 @@ const GameBody = () => (
             display: "flex",
             flexDirection: "row",
             flexWrap: "wrap",
+            scrollbarWidth: 10,
+            gap: 3,
             overflowY: "auto",
             overFlowY: "hidden",
           }}
           height="60vh"
+          width="100%"
         >
           {MOCK_GAME_DATA.map((item) => (
-            <Item>{item}</Item>
+            // <Item>{item}</Item>
+            <GameCardIcon title={item}/>
           ))}
         </Box>
       </Grid>
