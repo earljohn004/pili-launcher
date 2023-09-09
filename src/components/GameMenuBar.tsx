@@ -9,11 +9,11 @@ const GameMenuBar = () => {
     const fetchResourcePath = async () => {
       // Resource returns Junction link for windows containing //?/
       // Trim the return to get the correct value
-      return (await resolveResource("webui/menu/index.html")).substring(4);
+      return (await resolveResource("webui/header/index.html")).substring(4);
     };
 
     if (import.meta.env.DEV) {
-      setSourceDir("src-tauri/webui/menu/index.html");
+      setSourceDir("src-tauri/webui/header/index.html");
     } else {
       console.log("PROD Mode");
       fetchResourcePath()
@@ -27,7 +27,7 @@ const GameMenuBar = () => {
 
   return (
     <>
-      <Box sx={{ backgroundColor: "black", height: 150, overflow: "hidden" }}>
+      <Box sx={{ height: 150, overflow: "hidden", zIndex: 20 }}>
         <iframe
           scrolling="no"
           height="100%"

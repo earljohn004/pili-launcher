@@ -28,7 +28,6 @@ const GameBody = () => (
   <>
     <Box
       sx={{
-        backgroundColor: "black",
         height: "62vh",
         width: "99vw",
         overflowX: "hidden",

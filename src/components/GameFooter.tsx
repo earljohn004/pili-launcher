@@ -3,7 +3,7 @@ import { Box } from "@mui/material";
 const GameFooter = () => {
   return (
     <>
-      <Box sx={{ backgroundColor: "black", height: 120 }}>
+      <Box sx={{ height: 120, zIndex: 20 }}>
         <iframe
           height="100%"
           width="100%"
