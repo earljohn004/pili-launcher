@@ -6,7 +6,7 @@ import GameFooter from "./components/GameFooter";
 function App() {
   return (
     <>
-      <Container disableGutters maxWidth={false} >
+      <Container disableGutters maxWidth={false}>
         <GameMenuBar/>
         <GameBody/>
         <GameFooter/>

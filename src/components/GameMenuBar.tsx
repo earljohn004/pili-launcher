@@ -28,7 +28,6 @@ const GameMenuBar = () => {
   return (
     <>
       <Box sx={{ backgroundColor: "red", height: 150 }}>
-        <Typography variant="body1">{sourceDir}</Typography>
         <iframe height="100%" width="100%" src={sourceDir} />
       </Box>
     </>
