@@ -1,5 +1,6 @@
 import { Box, BoxProps, Button, Grid, Stack } from "@mui/material";
 import { MOCK_GAME_DATA } from "../constants/mockData";
+import zIndex from "@mui/material/styles/zIndex";
 
 function Item(props: BoxProps) {
   const { sx, ...other } = props;
@@ -24,33 +25,61 @@ function Item(props: BoxProps) {
 }
 
 const GameBody = () => (
-  <Grid container height={600} maxHeight={500}>
-    <Grid xs={2} sx={{ backgroundColor: "orange" }} height="100%">
-      <Stack gap={2} width="90%" marginLeft={2} marginTop={5}>
-        <Button variant="text" color="inherit">
-          Online Games
-        </Button>
-        <Button variant="contained">LAN Games</Button>
-        <Button variant="contained">Game Tools</Button>
-        <Button variant="contained">Portable Apps</Button>
-      </Stack>
-    </Grid>
-    <Grid xs={10}>
-      <Box
-        sx={{
-          display: "flex",
-          flexDirection: "row",
-          flexWrap: "wrap",
+  <>
+    <Box
+      sx={{
+        backgroundColor: "black",
+        height: "62vh",
+        width: "99vw",
+        overflowX: "hidden",
+        overflowY: "hidden",
+        zIndex: 1,
+        position: "absolute",
+        margin: 0,
+      }}
+    >
+      <iframe
+        height="100%"
+        width="100%"
+        style={{
+          borderWidth: 0,
+          borderStyle: "hidden",
+          overflowY: "hidden",
+          overflowX: "hidden",
         }}
-        height="60vh"
-        overflow="scroll"
-      >
-        {MOCK_GAME_DATA.map((item) => (
-          <Item>{item}</Item>
-        ))}
-      </Box>
+        scrolling="no"
+        src="src-tauri/webui/body/index.html"
+      />
+    </Box>
+    <Grid container maxHeight={500} sx={{ zIndex: 999, overflow: "hidden" }}>
+      <Grid xs={2} sx={{ zIndex: 999 }} height="100%">
+        <Stack gap={2} width="90%" marginLeft={2} marginTop={5}>
+          <Button variant="text" color="inherit">
+            Online Games
+          </Button>
+          <Button variant="contained">LAN Games</Button>
+          <Button variant="contained">Game Tools</Button>
+          <Button variant="contained">Portable Apps</Button>
+        </Stack>
+      </Grid>
+      <Grid xs={10} sx={{ zIndex: 999 }}>
+        <Box
+          sx={{
+            display: "flex",
+            flexDirection: "row",
+            flexWrap: "wrap",
+            overflowY: "scroll",
+            overFlowY: "hidden",
+          }}
+          height="60vh"
+        >
+          {MOCK_GAME_DATA.map((item) => (
+            <Item>{item}</Item>
+          ))}
+        </Box>
+      </Grid>
     </Grid>
-  </Grid>
+  </>
 );
 
 export default GameBody;

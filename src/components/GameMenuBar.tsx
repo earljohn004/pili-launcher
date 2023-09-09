@@ -27,8 +27,14 @@ const GameMenuBar = () => {
 
   return (
     <>
-      <Box sx={{ backgroundColor: "red", height: 150 }}>
-        <iframe height="100%" width="100%" src={sourceDir} />
+      <Box sx={{ backgroundColor: "black", height: 150, overflow: "hidden" }}>
+        <iframe
+          scrolling="no"
+          height="100%"
+          width="100%"
+          style={{ borderWidth: 0, borderStyle: "hidden", overflow: "hidden" }}
+          src={sourceDir}
+        />
       </Box>
     </>
   );
