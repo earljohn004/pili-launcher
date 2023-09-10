@@ -1,0 +1,16 @@
+[games]
+[[games.list]]
+title = "Game 1"
+path = "path/to/game1"
+category = "Online Games"
+flags = ["flag1", "flag2"]
+
+[[games.list]]
+title = "Game 2"
+path = "path/to/game1"
+category = "Online Games"
+icon = "path/to/icon.png"
+flags = ["flag1", "flag2"]
+
+[categories]
+list = ["Offline Games", "Offline Games", "Internet"]
