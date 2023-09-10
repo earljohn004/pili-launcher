@@ -1,6 +1,6 @@
 import { Box, Button, Grid, Stack } from "@mui/material";
 import GameCardIcon from "./GameCardIcon";
-import { PropsGameBody } from "../interface/GameInterface";
+import { PropsGameBody } from "../../types/GameInterface";
 
 const GameBody = (props: PropsGameBody) => (
   <>

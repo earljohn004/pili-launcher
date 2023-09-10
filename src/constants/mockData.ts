@@ -1,4 +1,4 @@
-import { PropsGameBody } from "../interface/GameInterface";
+import { PropsGameBody } from "../../types/GameInterface";
 
 const dummyGameList: string[] = [
   "Game 01",
