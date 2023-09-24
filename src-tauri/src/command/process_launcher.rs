@@ -1,11 +1,17 @@
 use std::process::{ Command, ExitStatus };
 
-fn launch_application(path: &str) -> Result<ExitStatus, std::io::Error> {
-    // On Windows, we use `cmd.exe` to run the batch file
+fn launch_application(path: &str, args: Option<Vec<&str>>) -> Result<ExitStatus, std::io::Error> {
     let status = if cfg!(target_os = "windows") {
-        Command::new("cmd").args(&["/C", path]).status()?
+        let mut command = Command::new(path);
+        if let Some(args) = args {
+            for arg in args {
+                command.arg(arg);
+            }
+        } else {
+            println!("No additional arguments given");
+        }
+        command.status()?
     } else {
-        // On other platforms, just spawn the executable directly
         Command::new(path).status()?
     };
 
@@ -16,37 +22,29 @@ fn launch_application(path: &str) -> Result<ExitStatus, std::io::Error> {
 #[cfg(test)]
 mod tests {
     use super::*;
-    use std::fs;
 
     #[test]
-    fn test_spawn_executable() {
-        // Create a simple test executable for Windows
-        let test_executable_path = "test_executable.bat";
-        let test_executable_content = r#"@echo off
-echo Test executable
-exit /b 0
-"#;
-
-        // Write the test executable content to a file
-        fs::write(test_executable_path, test_executable_content).expect("Failed to write to file");
-
-        // Spawn the executable
-        let result = launch_application(test_executable_path);
-
-        // Ensure the execution was successful
+    fn test_spawn_google_chrome_with_flag() {
+        let result = launch_application(
+            "C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe",
+            Some(vec!["--incognito"])
+        );
         assert!(result.is_ok());
-
-        // Clean up the temporary file
-        fs::remove_file(test_executable_path).expect("Failed to remove file");
     }
 
     #[test]
-    fn test_spawn_google_chrome() {
-        // Spawn the executable
-        let result = launch_application("C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe");
-
-        // Ensure the execution was successful
+    fn test_spawn_google_chrome_without_flag() {
+        let result = launch_application(
+            "C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe",
+            None
+        );
         assert!(result.is_ok());
+    }
+
+    #[test]
+    fn test_spawn_application_not_found() {
+        let result = launch_application("C:\\chrome.exe", Some(vec!["--incognito"]));
+        assert!(result.is_err());
     }
 }
 
