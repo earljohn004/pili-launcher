@@ -37,7 +37,8 @@
         "icons/icon.ico"
       ],
       "resources": [
-        "webui/*"
+        "webui/*",
+        "gameconfig/*"
       ]
     },
     "security": {

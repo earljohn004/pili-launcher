@@ -2,6 +2,7 @@ import { Box, Container } from "@mui/material";
 import GameHeader from "./components/GameHeader";
 import GameBody from "./components/GameBody";
 import GameFooter from "./components/GameFooter";
+import { MOCK_GAME_DATA } from "./constants/mockData";
 
 function App() {
   return (
@@ -30,7 +31,7 @@ function App() {
         </Box>
         <div style={{ zIndex: 100 }}>
           <GameHeader />
-          <GameBody />
+          <GameBody {...MOCK_GAME_DATA} />
           <GameFooter />
         </div>
       </Container>
