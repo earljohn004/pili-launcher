@@ -24,15 +24,9 @@ pub fn read_config_file(filepath: String) -> Result<Vec<Game>, Error> {
     let toml_value: toml::Value = toml::from_str(&contents).expect("Unable to parse TOML");
 
     // Access the [games] section
-    let games = toml_value["games"].as_array().expect("[games] section not found");
-
-    // Deserialize the games section into a Vec<Game>
-    let games: Vec<Game> = games
-        .iter()
-        .map(|game|
-            toml::de::from_str(&toml::to_string(game).expect("Failed to serialize game entry"))
-        )
-        .collect::<Result<Vec<Game>, _>>()
+    let game_list = toml_value["games"]["entry"].as_array();
+    let games: Vec<Game> = serde_json
+        ::from_value(serde_json::to_value(&game_list).unwrap())
         .expect("Failed to deserialize [games] section");
 
     // Now you have a Vec<Game> with the deserialized data
@@ -72,7 +66,9 @@ mod tests {
             flags = ["flag3", "flag4"]
         "#;
         let test_filename = "./config.toml";
-        let mut file = File::create(std::path::Path::new(test_filename)).expect("Unable to create test file");
+        let mut file = File::create(std::path::Path::new(test_filename)).expect(
+            "Unable to create test file"
+        );
         file.write_all(toml_content.as_bytes()).expect("Unable to write to test file");
 
         let extracted_games = read_config_file(test_filename.to_string());

@@ -14,7 +14,7 @@ tauri-build = { version = "1.4", features = [] }
 
 [dependencies]
 tauri = { version = "1.4", features = [ "path-all", "fs-all", "shell-open"] }
-serde = { version = "1.0", features = ["derive"] }
+serde = { version = "1.0", features = ["derive", "serde_derive"] }
 serde_json = "1.0"
 actix-web = "4"
 toml = "0.7"
