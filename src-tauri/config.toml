@@ -4,13 +4,12 @@
             title = "Game 1"
             path = "path/to/game1"
             category = "cat1"
-            icon = "path/to/icon"
+            icon = "/path/to/icon"
             flags = ["flag1", "flag2"]
 
             [[games.entry]]
             title = "Game 2"
             path = "path/to/game2"
-            category = "cat1"
-            icon = "path/to/icon"
+            category = "cat2"
+            icon = "/path/to/icon"
             flags = ["flag3", "flag4"]
-        
